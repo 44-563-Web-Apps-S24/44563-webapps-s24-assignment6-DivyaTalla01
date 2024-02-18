@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Discount Calculations</title>
+</head>
+<body>
+<h1>Divya Talla Discount Calculations</h1>
+ 
+<body>
+
+
+
+<form>
+    <label for="price">Enter price per: </label>
+    <input type ="number" id="price"  value="10"> <br>
+
+    <label for="count">Enter the number of items: </label>
+    <input type ="number" id="count" value="9"> <br>
+ 
+    <label for="reductions">Enter the discount percent:</label>
+    <input type="number" id="reductions" value="5"><br>
+    
+    <button onclick="discount()">Show total</button>
+    
+    <div id="result"></div>
+</form>
+
+
+<p id="result"> </p>
+
+<script>
+    function discount() {
+        // Get values from input elements
+        const price = parseFloat(document.getElementById('price').value);
+        const count = parseInt(document.getElementById('count').value);
+        const discount = parseFloat(document.getElementById('reductions').value);
+
+        // Initialize a local variable to hold the output
+        let toShow = "Totals are: ";
+
+        // Loop to compute total value with different discount percentages
+        for (let i = 0; i < 5; i++) {
+            let currentDiscount = discount + i;
+            let total = price * count * (1 - currentDiscount / 100);
+            toShow += `${currentDiscount}% is ${total.toFixed(1)};`;
+        }
+        console.log(toShow); 
+
+         // Update the result display
+    console.log(document.getElementById('result')); // Check if the element is found
+    document.getElementById('result').innerText = toShow + `(price was ${price}, number is ${count}, discount is ${discount})`;
+    }
+</script>
+
+
+</body>
+</html> 
