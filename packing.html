@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Packing List</title>
+</head>
+<body>
+    <h1>Divya Talla packs for a trip</h1>
+
+    <form id="packingForm">
+        <div>
+            <label for="light">Pack light:</label>
+            <input type="checkbox" id="light" value="True">
+        </div>
+        <div>
+            <label for="carry">Carry on:</label>
+            <input type="checkbox" id="carry" value="True">
+        </div>
+        <div>
+            <label for="tablet">Tablet:</label>
+            <input type="checkbox" id="tablet" value="False">
+        </div>
+    </form>
+
+    <button onclick="selectPack()">Select for packing</button><br><br>
+
+    <div id="result"></div>
+
+    <script>
+        let my_pack = {};
+
+        function selectPack() {
+            // Reset my_pack to an empty object
+            my_pack = {};
+
+            // Set properties for my_pack based on checkbox states
+            my_pack.light = document.getElementById('light').checked;
+            my_pack.carry = document.getElementById('carry').checked;
+            my_pack.tablet = document.getElementById('tablet').checked;
+
+            // Update the result display
+            document.getElementById('result').innerText = JSON.stringify(my_pack);
+        }
+    </script>
+</body>
+</html>
