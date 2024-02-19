@@ -27,15 +27,34 @@
     <div id="result"></div>
 </form>
 
+<form>
+    <label>
+        <input type="radio" name="operation" value="sum" onclick="chooseOp()">
+        Sum
+    </label><br>
+    
+    <label>
+        <input type="radio" name="operation" value="multiply" onclick="chooseOp()">
+        Multiply
+    </label><br>
+    
+    <label>
+        <input type="radio" name="operation" value="exponent" onclick="chooseOp()">
+        Exponent
+    </label><br>
+</form>
+
 
 <p id="result"> </p>
 
+
 <script>
+    
     function discount() {
         // Get values from input elements
-        const price = parseFloat(document.getElementById('price').value);
-        const count = parseInt(document.getElementById('count').value);
-        const discount = parseFloat(document.getElementById('reductions').value);
+        let price = parseFloat(document.getElementById('price').value);
+        let count = parseInt(document.getElementById('count').value);
+        let discount = parseInt(document.getElementById('reductions').value);
 
         // Initialize a local variable to hold the output
         let toShow = "Totals are: ";
@@ -43,15 +62,49 @@
         // Loop to compute total value with different discount percentages
         for (let i = 0; i < 5; i++) {
             let currentDiscount = discount + i;
-            let total = price * count * (1 - currentDiscount / 100);
-            toShow += `${currentDiscount}% is ${total.toFixed(1)};`;
+            // Round the total to 2 decimal places
+            let total = +(price * count * (1 - currentDiscount / 100)).toFixed(2);
+            toShow += `${currentDiscount}% is ${total}; `;
         }
-        console.log(toShow); 
-
-         // Update the result display
-    console.log(document.getElementById('result')); // Check if the element is found
-    document.getElementById('result').innerText = toShow + `(price was ${price}, number is ${count}, discount is ${discount})`;
+        
+        // Update the result display
+        console.log(toShow); // Check the output in the console
+        console.log(document.getElementById('result')); // Check if the element is found
+        document.getElementById('result').innerText = toShow + 
+        `(price was ${price}, number is ${count}, discount is ${discount})`;
     }
+    
+
+    
+
+     function chooseOp() {
+            // Get the selected operation
+            const operation = document.querySelector('input[name="operation"]:checked').value;
+
+            // Get the values from input elements
+            const price = parseFloat(document.getElementById('price').value);
+            const discount = parseFloat(document.getElementById('reductions').value);
+
+            // Perform the selected operation based on the radio button value
+            let result;
+            switch (operation) {
+                case 'sum':
+                    result = price + discount;
+                    document.getElementById('result').innerText = `Sum of ${price} and ${discount} is ${result}`;
+                    break;
+                case 'multiply':
+                    result = price * discount;
+                    document.getElementById('result').innerText = `Product of ${price} and ${discount} is ${result}`;
+                    break;
+                case 'exponent':
+                    result = Math.pow(price, discount);
+                    document.getElementById('result').innerText = `Exponent of ${price} to the power of ${discount} is ${result}`;
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
 </script>
 
 
