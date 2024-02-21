@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Packing List</title>
+    <title>Sample Package for a Trip</title>
 </head>
+
 <body>
-    <h1>Divya Talla packs for a trip</h1>
+    <h1>Divya's Packs for a Trip</h1>
 
     <form id="packingForm">
         <div>
@@ -21,27 +23,56 @@
             <label for="tablet">Tablet:</label>
             <input type="checkbox" id="tablet" value="False">
         </div>
+        <input type="button" onclick="selectPack()" value="Select for packing"><br>
+        <div id="result"></div>
     </form>
 
-    <button onclick="selectPack()">Select for packing</button><br><br>
 
-    <div id="result"></div>
+   <br>
 
-    <script>
-        let my_pack = {};
-
-        function selectPack() {
-            // Reset my_pack to an empty object
-            my_pack = {};
-
-            // Set properties for my_pack based on checkbox states
-            my_pack.light = document.getElementById('light').checked;
-            my_pack.carry = document.getElementById('carry').checked;
-            my_pack.tablet = document.getElementById('tablet').checked;
-
-            // Update the result display
-            document.getElementById('result').innerText = JSON.stringify(my_pack);
-        }
-    </script>
+    <form id="updateForm">
+        <div>
+            <label for="month">Enter travel month:</label>
+            <input type="text" id="month" value="May">
+        </div>
+        <div>
+            <label for="price">Enter price:</label>
+            <input type="text" id="price">
+        </div>
+        <input type="button" onclick="updatePack()" value="Update the pack"><br>
+        <div id="result1"></div>
+    </form>
 </body>
+
+<script>
+    let my_pack = {};
+   
+
+    function selectPack() {
+        // Reset my_pack to an empty object
+        my_pack = {};
+
+        // Set properties for my_pack based on checkbox states
+        my_pack.light = document.getElementById('light').checked;
+        my_pack.carry = document.getElementById('carry').checked;
+        my_pack.tablet = document.getElementById('tablet').checked;
+
+        // Update the result display
+        document.getElementById('result').innerText = JSON.stringify(my_pack);
+    }
+
+    let my_pack2 = {};
+
+    function updatePack() {
+        my_pack2={};
+        var month = document.getElementById('month').value;
+        var price = parseInt(document.getElementById('price').value);
+
+        my_pack2.month = month;
+        my_pack2.price = parseInt(price);
+
+        document.getElementById('result1').innerHTML = JSON.stringify(my_pack2);
+    }
+</script>
+
 </html>
