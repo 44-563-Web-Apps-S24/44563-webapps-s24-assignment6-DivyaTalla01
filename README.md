@@ -4,4 +4,5 @@ Introduction to Java Script and DOM
 hosed by:
 https://github.com/44-563-Web-Apps-S24/44563-webapps-s24-assignment6-DivyaTalla01/blob/main/animal.html
 https://github.com/44-563-Web-Apps-S24/44563-webapps-s24-assignment6-DivyaTalla01/blob/main/Discount.html
+https://github.com/44-563-Web-Apps-S24/44563-webapps-s24-assignment6-DivyaTalla01/blob/main/packing.html
 
