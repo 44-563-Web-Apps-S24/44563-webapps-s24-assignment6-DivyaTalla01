@@ -17,7 +17,8 @@
         <label for="guessAnimal">Guess the animal:</label><br>
         <input type="text" id="guessAnimal"><br>
         
-        <button type="button" onclick="checkAnimal()">Check the guess</button>
+        
+        <button type="button" id="checkGuessBtn" onclick="checkAnimal()">Check the guess</button>
     </form>
     <p id="result"></p>
     
@@ -42,7 +43,16 @@
         }
         
         document.getElementById('result').innerHTML = `Correct: ${correct}, Wrong: ${wrong}`;
-    }
+          // Check if the number of wrong guesses exceeds the number of correct guesses(bonus)
+          if (wrong > correct) {
+                document.getElementById('checkGuessBtn').setAttribute('onclick', 'tooManyWrongGuesses()');
+            }
+        }
+
+        function tooManyWrongGuesses() {
+            alert('Sorry, too many wrong guesses.');
+        }
+    
 </script>
 
 
